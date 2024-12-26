@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Message</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(45deg, #fff 25%, #ff0000 25%, #ff0000 50%, #fff 50%, #fff 75%, #ff0000 75%);
+            background-size: 100px 100px;
+            font-family: Arial, sans-serif;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .background-text {
+            position: fixed;
+            font-size: 120px;
+            color: rgba(255,255,255,0.1);
+            white-space: nowrap;
+            transform: rotate(-45deg);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .background-text:nth-child(1) { top: 10%; left: 0; }
+        .background-text:nth-child(2) { top: 30%; left: -10%; }
+        .background-text:nth-child(3) { top: 50%; left: 20%; }
+        .background-text:nth-child(4) { top: 70%; left: -15%; }
+        .background-text:nth-child(5) { top: 90%; left: 5%; }
+
+        .top-message {
+            text-align: center;
+            padding: 20px;
+            font-size: 24px;
+            color: white;
+            background: rgba(0,0,0,0.7);
+            margin-bottom: 40px;
+            opacity: 0;
+            transition: opacity 1s;
+        }
+
+        .center-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 60vh;
+        }
+
+        .button {
+            padding: 15px 30px;
+            font-size: 20px;
+            background: #ff4444;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .button:hover {
+            transform: scale(1.1);
+            background: #ff6666;
+        }
+
+        .button:active {
+            transform: scale(0.95);
+        }
+
+        .button::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1, 1) translate(-50%);
+            transform-origin: 50% 50%;
+        }
+
+        .button:active::after {
+            animation: ripple 1s ease-out;
+        }
+
+        .celebration {
+            opacity: 0;
+            text-align: center;
+            font-size: 48px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            transition: opacity 1s;
+            animation: pulse 2s infinite;
+        }
+
+        .bottom-section {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            padding: 20px;
+            background: rgba(0,0,0,0.7);
+            opacity: 0;
+            transition: opacity 1s;
+        }
+
+        .doctor-text {
+            color: white;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .arrow {
+            width: 2px;
+            height: 50px;
+            background: white;
+            margin: 10px auto;
+            transform: scaleY(0);
+            transition: transform 1s;
+        }
+
+        .love-message {
+            color: white;
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 10px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .firework {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            animation: explode 1s ease-out forwards;
+            pointer-events: none;
+        }
+
+        @keyframes explode {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(30); opacity: 0; }
+        }
+
+        @keyframes ripple {
+            0% {
+                transform: scale(0, 0);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(20, 20);
+                opacity: 0;
+            }
+        }
+
+        .show {
+            opacity: 1 !important;
+        }
+
+        .show-arrow {
+            transform: scaleY(1) !important;
+        }
+
+        .show-message {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-text">mota5alefa</div>
+    <div class="background-text">mota5alefa</div>
+    <div class="background-text">mota5alefa</div>
+    <div class="background-text">mota5alefa</div>
+    <div class="background-text">mota5alefa</div>
+    
+    <div class="top-message" id="topMessage">walahy el 3azeem batal esta7melt sana king walahy</div>
+    
+    <div class="center-content">
+        <button class="button" id="mainButton">click here for shetema</button>
+        <div class="celebration" id="celebration">Happy One Year! ❤️</div>
+    </div>
+
+    <div class="bottom-section" id="bottomSection">
+        <div class="doctor-text">doctor's rizz</div>
+        <div class="arrow" id="arrow"></div>
+        <div class="love-message" id="loveMessage">if i got alzahaimer 100 times, i will fall in love with you again each time</div>
+    </div>
+
+    <script>
+        document.getElementById('mainButton').addEventListener('click', function() {
+            // Show top message
+            document.getElementById('topMessage').classList.add('show');
+            
+            // Show celebration
+            document.getElementById('celebration').classList.add('show');
+            
+            // Show bottom section
+            document.getElementById('bottomSection').classList.add('show');
+            
+            // Animate arrow and love message
+            setTimeout(() => {
+                document.getElementById('arrow').classList.add('show-arrow');
+                document.getElementById('loveMessage').classList.add('show-message');
+            }, 500);
+
+            // Create fireworks
+            createFireworks();
+
+            // Disable button after click
+            this.disabled = true;
+            this.style.opacity = '0.7';
+            this.style.cursor = 'default';
+        });
+
+        function createFireworks() {
+            let fireworksCount = 0;
+            const maxFireworks = 50;
+            const interval = setInterval(() => {
+                if (fireworksCount >= maxFireworks) {
+                    clearInterval(interval);
+                    return;
+                }
+
+                const firework = document.createElement('div');
+                firework.className = 'firework';
+                firework.style.left = Math.random() * window.innerWidth + 'px';
+                firework.style.top = Math.random() * window.innerHeight + 'px';
+                firework.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                document.body.appendChild(firework);
+                
+                setTimeout(() => {
+                    firework.remove();
+                }, 1000);
+
+                fireworksCount++;
+            }, 100);
+        }
+    </script>
+</body>
+</html>
+
+
+
